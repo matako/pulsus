@@ -115,14 +115,14 @@ namespace Pulsus.Targets
             }
 
             connection.ConnectionString = connectionSettings.ConnectionString;
-
+            connection.Open(); //fix error connection not open
             if (!string.IsNullOrEmpty(DatabaseName))
             {
                 connection.ChangeDatabase(DatabaseName);
                 PulsusDebugger.Write(this, "Changed database to '{0}'", DatabaseName);
             }
 
-            connection.Open();
+           
             PulsusDebugger.Write(this, "Opened connection to database");
 
             return connection;
